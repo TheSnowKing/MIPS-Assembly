@@ -1,9 +1,5 @@
 # ***
-#
-# Conor Poland
-# Homework 5 - Guessing Game
-# CS 270
-#
+# Eliza Poland
 # ***
 	.text
 	.globl initRandom

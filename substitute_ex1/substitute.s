@@ -1,4 +1,5 @@
 #
+# Eliza Poland
 # substitute.s - substitute one character for another in a string
 #
     .data
@@ -33,28 +34,6 @@ main:
     li      $a2,4
     li      $v0,54
     syscall
-#
-# now we are ready to do the real work of substituting every instance of
-# 'orig' with 'new' in 'string'
-# HINT: before you start, initialize the following registers:
-# a0 = address of the string
-# a1 = char to look for
-# a2 = char to replace with
-# a3 = count of replacements (initialize to zero)
-# Have fun!
-#
-#
-#    int i,count=0;
-#    for (i=0;string[i]!=0;i++) 
-#        if (string[i] == orig) { 
-#            string[i]=new;
-#            count++;
-#        }
-#
-# INSERT YOUR CODE HERE.  Make sure the number of replacements
-# gets stored in $a3.
-#
-
 
     la $a0,string	# Load address of string to $a0
     lb $a1,orig		# Load original char
@@ -106,5 +85,3 @@ done:
 # Number of replacements: 3
 # -- program is finished running (dropped off bottom) --
 #
-
-    

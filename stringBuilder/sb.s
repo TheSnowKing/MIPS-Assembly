@@ -1,6 +1,5 @@
 # Eliza Poland
-# cs270
-# Asmt06 - String Builder
+# String Builder
 #
 # This program creates a string builder object which maintains the data
 # dynamically allocated buffer. The user can append to the buffer, display

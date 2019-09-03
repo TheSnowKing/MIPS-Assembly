@@ -1,9 +1,5 @@
 # ***
-#
 # Eliza Poland
-# Homework 5 - Guessing Game
-# CS 270
-#
 # ***
 	.data
 max:		.word 100  # Max value for the random number generator

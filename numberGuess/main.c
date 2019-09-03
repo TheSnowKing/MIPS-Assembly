@@ -1,5 +1,5 @@
 /**
- * @author Conor Poland
+ * Eliza Poland
  */
 
 #include <stdio.h>

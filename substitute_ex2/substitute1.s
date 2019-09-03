@@ -1,4 +1,5 @@
 #
+# Eliza Poland
 # substitute1.s - substitute one character for another in a string
 #  -- the syscalls have been translated to calls to functions 
 #     in util.s
@@ -73,22 +74,8 @@ main:
     add     $sp,$sp,112
     jr      $ra
 
-#
-# If you recall, I suggested the following for the original substitute.s:
-# HINT: before you start, initialize the following registers:
-# $a0 = address of the string
-# $a1 = char to look for
-# $a2 = char to replace with
-# 
-# If you did this, the code should be simple to change to a function!
-#
-#   int substitute(char *cptr, char orig, char new) ;
-#
     .globl  substitute
 substitute:
-# put your code for substitute here. Don't forget to return!
-
-
     la $a0,28($sp)	# Load address of string to $a0
     lb $a1,16($sp)	# Load original char
     lb $a2,20($sp)	# Load new char
@@ -114,4 +101,4 @@ done:
     jr $ra
 
 
-.include "/home/conor/Programs/Courses/cs270/util.s"
+.include "util.s"
