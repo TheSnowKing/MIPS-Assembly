@@ -1,0 +1,77 @@
+#
+# Eliza Poland
+# Homework 2
+# CS 270
+#
+# This program adds the absolute value of the
+# elements of an array
+#
+
+# INITIALIZE STEP
+0xb000	# 0x0 LA 0		# Load accum with value of 0
+0x2020	# 0x1 STORE RESULT	# Set RESULT to 0
+0xb001	# 0x2 LA 1		# Load accum with value of 1
+0x901f	# 0x3 SUB NITEMS	# Accum = 8 - 1
+0x4000	# 0x4 MVAC		# Move accum to ctr, ctr is initialized with NITEMS-1
+
+# LOOP GATE:
+0x6017	# 0x5 JLT END		# if (ctr < 0) goto -DONE GATE-
+
+# Store ctr to TEMP_CTR
+0xb000	# 0x6 LA 0		# Load accum with value of 0
+0x3000	# 0x7 ADDC		# Add counter to accum
+0x2021	# 0x8 STORE		# Store accum to TEMP_CTR
+
+# Get next array element into accum
+0xb022	# 0x9 LA		# Load accum with initial address
+0x3000	# 0xa ADDC		# Add counter to accum
+0xe000	# 0xb MVAA		# Move value in accum to areg (store address)
+0xc000	# 0xc LIA		# Load memory found at address in areg to accum
+
+# Determine sign
+0x4000	# 0xd MVAC		# Move accum to ctr
+0x6011	# 0xe  JLT		# If (ctr < 0) goto -NEG GATE-
+0x8020	# 0xf ADD		# Accum = RESULT + accum
+0x7012	# 0x10 JMP		# goto -ENDIF GATE-
+
+# NEG GATE:
+0x9020	# 0x11 SUB		# Accum = RESULT - accum
+
+# ENDIF GATE
+0x2020	# 0x12 STORE 		# Store the accum to address RESULT
+0x1021	# 0x13 LOAD		# Load TEMP_CTR to accum
+0x4000	# 0x14 MVAC		# Move accum to ctr
+0xa000  # 0x15 DEC		# Decrement counter
+0x7005	# 0x16 JMP 5		# Goto -LOOP GATE-
+
+# DONE GATE:
+0x0     # 0x17 HALT
+
+#
+#
+#
+0x0	# 0x18
+0x0	# 0x19
+0x0	# 0x1a
+0x0	# 0x1b
+0x0	# 0x1c
+0x0	# 0x1d
+0x0	# 0x1e
+#
+#
+#
+
+# Important data storage
+0x0008  # 0x1f NITEMS: The number of elements
+0x0000  # 0x20 RESULT: Where values are being stored
+0x0000	# 0x21 TEMP_CTR: Temp location to store the counter
+
+# Array elements
+0x0001  # 0x22 array[0]
+0x0002  # 0x23 array[1]
+0x0003  # 0x24 array[2]
+0x0004  # 0x25 array[3]
+0xffff  # 0x26 array[4]
+0xfffa  # 0x27 array[5]
+0x0007  # 0x28 array[6]
+0x0008  # 0x29 array[7]
